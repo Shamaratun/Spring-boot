@@ -1,14 +1,12 @@
 package com.meme.first.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping
+@CrossOrigin(origins= "*")
 public class DummyController {
-    @GetMapping("/hello")
+    @GetMapping("/hello")  //API endpoint
     public String hello(){
         return "Hello World";
     }
@@ -21,10 +19,11 @@ public int square(@RequestParam int number)
 {
     return number*number;
 }
-    @GetMapping("/name")
-    public String  name(@RequestParam String my_name,@RequestParam String my_fathers_name)
+    @GetMapping("/info")
+    public String  info(@RequestParam(name="aa") String my_name,@RequestParam (required = false)String my_fathers_name,
+                        @RequestParam(value="bb") int Age)
     {
-        return " my name is  "+ my_name +"  and  my_fathers_name  "+ my_fathers_name ;
+        return " My name is  "+ my_name +".  and  My fathers name is "+ my_fathers_name +". His age is "+Age;
 
     }
 }
