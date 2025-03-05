@@ -8,7 +8,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 @Entity(name= "student_sb")
 
-public class student {
+public class Student {
 @Id
 @GeneratedValue(strategy= GenerationType.AUTO)
 private int  id;
@@ -56,10 +56,10 @@ public void setDob(LocalDate dob) {
 	this.dob = dob;
 }
 
-public student() {
+public Student() {
 	
 }
-public student(int id, String name, String clazz, int age, String address, LocalDate dob) {
+public Student(int id, String name, String clazz, int age, String address, LocalDate dob) {
 	
 	this.id = id;
 	this.name = name;
