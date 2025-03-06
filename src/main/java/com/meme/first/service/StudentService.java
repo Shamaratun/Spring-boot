@@ -1,6 +1,7 @@
 package com.meme.first.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -16,8 +17,10 @@ public class StudentService {
 	}
 
 	public Student saveStudent(Student student) {
-		Student saved = repository.save(student);
-		return saved;
+		if (student != null)
+			return repository.save(student);
+		else
+			return null;
 	}
 
 	public List<Student> getStudents() {
@@ -30,4 +33,11 @@ public class StudentService {
 		repository.deleteById(id);
 	}
 
-}
+	public Optional<Student> findStudentById(int id) {
+		// TODO Auto-generated method stub
+		return repository.findById(id);
+	}
+	public List<Student> getStudentsByName(String name) {
+
+		return repository.findAllByName( name);
+}}
