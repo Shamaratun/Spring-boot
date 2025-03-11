@@ -3,6 +3,7 @@ package com.meme.first.controller;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,7 +19,16 @@ import com.meme.first.service.StudentService;
 @RestController
 @RequestMapping(value = "/student")
 public class StudentController {
-	private final StudentService service;
+	@Autowired // field injection @ autowired doesn't support final keyword , initial value like null;
+	private  StudentService service;
+	
+//	private final StudentService service=null; 
+	
+//	//Dependency injection
+//	//Constructor injection
+//	public StudentController(StudentService service) {
+//		this.service = service;
+//	}
 
 	public StudentController(StudentService service) {
 		this.service = service;
