@@ -1,6 +1,7 @@
 package com.meme.first.service;
 
 import java.util.List;
+
 import java.util.Optional;
 
 import org.springframework.stereotype.Component;
@@ -9,8 +10,10 @@ import org.springframework.stereotype.Service;
 import com.meme.first.model.Student;
 import com.meme.first.repository.StudentRepository;
 
-//@Service
-@Component
+import lombok.extern.slf4j.Slf4j;
+@Slf4j
+@Service
+
 public class StudentService {
 	public final StudentRepository repository;
 

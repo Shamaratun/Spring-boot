@@ -3,6 +3,8 @@ package com.meme.first.controller;
 import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,20 +21,22 @@ import com.meme.first.service.StudentService;
 @RestController
 @RequestMapping(value = "/student")
 public class StudentController {
-	@Autowired // field injection @ autowired doesn't support final keyword , initial value like null;
-	private  StudentService service;
 	
+	private static final Logger log = LoggerFactory.getLogger(StudentController.class);
+
+	
+//	@Autowired // field injection @ autowired doesn't support final keyword , initial value like null;
+//	private  StudentService service;
 //	private final StudentService service=null; 
 	
-//	//Dependency injection
-//	//Constructor injection
-//	public StudentController(StudentService service) {
-//		this.service = service;
-//	}
-
+	//Dependency injection
+	//Constructor injection
+	private StudentService service;
 	public StudentController(StudentService service) {
 		this.service = service;
 	}
+
+	
 
 	@PostMapping
 	public Student saveStudent(@RequestBody Student student) {
